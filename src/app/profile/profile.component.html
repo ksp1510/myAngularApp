@@ -1,1 +1,12 @@
 <p>profile works!</p>
+
+<h1>{{title}}</h1>
+
+<img [src]="imgUrl" alt="" width="320px" height="180px">
+<br><br>
+<button (click)="incrementCount()">Click</button>
+
+<p>Conter: {{viewCount}}</p>
+<br><br>
+<input type="text" [(ngModel)]="name">
+<p>hello, {{name}}</p>

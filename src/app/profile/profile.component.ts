@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  title = "My profile page title";
+
+  imgUrl = "https://i.pinimg.com/originals/b3/b7/2c/b3b72cb8f1dbf723ecc3d33274bd315e.jpg";
+
+  viewCount = 0;
+
+  name = "Kishan";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  incrementCount() {
+    this.viewCount++;
+  }
 }
