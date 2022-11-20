@@ -15,22 +15,24 @@
     <a class="nav-link disabled" href="#">Disabled</a>
   </li>
 </ul>
-<form>
+
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password">
   </div>
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
-  <button type="submit" class="btn btn-primary">Sign In</button>
-</form>
+  <button type="submit" class="btn btn-primary" (click)="login()" *ngIf="loggedOut; else logOut">Sign In</button>
+  <ng-template #logOut>
+    <button type="submit" class="btn btn-primary" (click)="signout()">Sign Out</button>
+  </ng-template>
 </div>
 
 <ng-template #signUpForm>
@@ -50,21 +52,23 @@
       <a class="nav-link disabled" href="#">Disabled</a>
     </li>
   </ul>
-  <form>
+
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input type="email" class="form-control" [(ngModel)]="email" aria-describedby="emailHelp" placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password">
     </div>
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-  </form>
+    <button type="submit" class="btn btn-primary" (click)="signup()">Sign Up</button>
+    <ng-template #logOut>
+      <button type="submit" class="btn btn-primary" (click)="signout()">Sign Out</button>
+    </ng-template>
 </div>
 </ng-template>

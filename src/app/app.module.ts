@@ -11,6 +11,11 @@ import { LoginComponent } from './login/login.component';
 import { RecentAlbumsComponent } from './recent-albums/recent-albums.component';
 import { UploadPicturesComponent } from './upload-pictures/upload-pictures.component';
 import { PhotoDetailsComponent } from './photo-details/photo-details.component';
+
+import { AngularFireModule } from "@angular/fire/compat";
+import { environment } from "../environments/environment";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { UserService } from './user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +31,11 @@ import { PhotoDetailsComponent } from './photo-details/photo-details.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

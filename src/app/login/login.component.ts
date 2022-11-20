@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,52 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   formVisibility = true;
+  loggedOut = false;
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-  }
 
+  }
+  isLoggedIn(){
+    if(this.loggedOut){
+      this.loggedOut = false;
+    }
+    else{
+      this.loggedOut = true;
+    }
+  }
   changeSignInVisibility(){
     this.formVisibility = true;
   }
 
   changeSignUpVisibility(){
     this.formVisibility = false;
+  }
+
+  login(){
+    console.log('User tried to login');
+    this.userService.login(this.email, this.password);
+    this.isLoggedIn();
+    this.email = "";
+    this.password = "";
+  }
+
+  signup(){
+    console.log('User tried to signup');
+    this.userService.signup(this.email, this.password);
+    this.isLoggedIn();
+    this.email = "";
+    this.password = "";
+  }
+
+  signout(){
+    console.log('User tried to log out');
+    this.userService.logout();
+    this.isLoggedIn();
   }
 
 }
