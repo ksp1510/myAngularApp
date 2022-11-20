@@ -4,21 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './login/login.component';
 import { MyAlbumsComponent } from './my-albums/my-albums.component';
-import { CreateAlbumComponent } from './create-album/create-album.component';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
+import { CreateAlbumComponent } from './create-album/create-album.component';
+import { LoginComponent } from './login/login.component';
+import { RecentAlbumsComponent } from './recent-albums/recent-albums.component';
 import { UploadPicturesComponent } from './upload-pictures/upload-pictures.component';
 import { PhotoDetailsComponent } from './photo-details/photo-details.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
-    LoginComponent,
     MyAlbumsComponent,
-    CreateAlbumComponent,
     AlbumDetailsComponent,
+    CreateAlbumComponent,
+    LoginComponent,
+    RecentAlbumsComponent,
     UploadPicturesComponent,
     PhotoDetailsComponent
   ],
