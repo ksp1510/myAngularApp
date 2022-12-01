@@ -30,6 +30,11 @@
         </div>
       </li>-->
     </ul>
+    <div style="padding-right: 50px; padding-top: 10px; margin-left: 75.5%;" *ngIf="userService.user | async">
+      <a class="btn btn-outline-danger" (click)="signout()">
+        Logout
+      </a>
+    </div>
   </div>
 </nav>
 <router-outlet></router-outlet>

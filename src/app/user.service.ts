@@ -10,10 +10,27 @@ import { Router, RouterLink } from '@angular/router';
 export class UserService {
   user: Observable<firebase.default.User | null>;
 
-
   constructor(private firebaseAuth: AngularFireAuth,
               private router: Router) {
     this.user = firebaseAuth.authState;
+
+    //console.log("User Id Token: ", localStorage.getItem('idToken'));
+
+    this.user.subscribe(
+      userInfo => {
+        console.log("User Info: ", userInfo?.getIdToken())
+        this.storeIdToken(userInfo!.getIdToken());
+      }
+    );
+   }
+
+   storeIdToken(idToken: Promise<string>){
+      idToken.then(
+        id => {
+          localStorage.setItem('idToken', id);
+          console.log("idToken value: ", localStorage.getItem('idToken'));
+        }
+      );
    }
 
    signup(email: string, password: string){
@@ -46,12 +63,11 @@ export class UserService {
    logout(){
     this.firebaseAuth.signOut()
       .then(value => {
+        localStorage.clear();
         console.log('User logged out', value);
       })
       .catch(err => {
         console.log('Something went wrong: ', err.message);
       });
-      this.router.navigate(['login']);
-
    }
 }

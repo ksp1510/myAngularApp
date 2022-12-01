@@ -15,6 +15,7 @@ import { PhotoDetailsComponent } from './photo-details/photo-details.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { UserService } from './user.service';
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserService } from './user.service';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

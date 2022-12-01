@@ -51,10 +51,4 @@ export class LoginComponent implements OnInit {
     this.password = "";
   }
 
-  signout(){
-    console.log('User tried to log out');
-    this.userService.logout();
-    this.isLoggedIn();
-  }
-
 }
