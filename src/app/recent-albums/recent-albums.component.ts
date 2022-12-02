@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumService } from '../album.service';
 
 @Component({
   selector: 'app-recent-albums',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecentAlbumsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private albumService: AlbumService) { }
 
   ngOnInit(): void {
+    this.albumService.getAllAlbums().subscribe(
+      response => {
+        console.log("Got all album", response);
+      }
+    )
   }
 
 }
