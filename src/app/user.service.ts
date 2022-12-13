@@ -8,7 +8,7 @@ import { Router, RouterLink } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
-  user: Observable<firebase.default.User | null>;
+  user: Observable<firebase.default.User>;
 
   constructor(private firebaseAuth: AngularFireAuth,
               private router: Router) {
@@ -18,8 +18,8 @@ export class UserService {
 
     this.user.subscribe(
       userInfo => {
-        console.log("User Info: ", userInfo?.getIdToken())
-        this.storeIdToken(userInfo!.getIdToken());
+        //console.log("User Info: ", userInfo.getIdToken())
+        this.storeIdToken(userInfo.getIdToken());
       }
     );
    }

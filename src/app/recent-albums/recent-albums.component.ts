@@ -10,12 +10,11 @@ export class RecentAlbumsComponent implements OnInit {
 
   constructor(private albumService: AlbumService) { }
 
-  ngOnInit(): void {
-    this.albumService.getAllAlbums().subscribe(
-      response => {
-        console.log("Got all album", response);
-      }
-    )
+  ngOnInit() {
+    console.log("This is recent albums")
+    this.albumService.getAllAlbums().subscribe((res) =>
+      console.log("Got response: ", res)
+    );
   }
 
 }

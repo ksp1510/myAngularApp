@@ -15,7 +15,7 @@ import { PhotoDetailsComponent } from './photo-details/photo-details.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { UserService } from './user.service';
 @NgModule({
   declarations: [
