@@ -42,7 +42,7 @@ export class UserService {
       .catch(err => {
         console.log('Something went wrong: ', err.message);
       });
-      this.router.navigate(['profile']);
+      this.router.navigate(['/profile/me']);
    }
 
    login(email: string, password: string){
@@ -51,7 +51,7 @@ export class UserService {
       .then(value => {
         console.log('Nice, it worked!', value);
         //RouterLink='/profile';
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/profile/me']);
         console.log('profile page');
       })
       .catch(err => {
@@ -65,6 +65,7 @@ export class UserService {
       .then(value => {
         localStorage.clear();
         console.log('User logged out', value);
+        this.router.navigate(['/login']);
       })
       .catch(err => {
         console.log('Something went wrong: ', err.message);
