@@ -3,5 +3,5 @@ export class Album{
   createdBy: string;
   creationDate: string;
   id: string;
-  title: string;
+  name: string;
 }

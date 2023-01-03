@@ -50,7 +50,7 @@ export class UserService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!', value);
-        //RouterLink='/profile';
+
         this.router.navigate(['/profile/me']);
         console.log('profile page');
       })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Album } from '../Album';
 import { AlbumService } from '../album.service';
 
 @Component({
@@ -8,12 +9,18 @@ import { AlbumService } from '../album.service';
 })
 export class RecentAlbumsComponent implements OnInit {
 
+  albums: Album[];
+
   constructor(private albumService: AlbumService) { }
 
   ngOnInit() {
     console.log("This is recent albums")
-    this.albumService.getAllAlbums().subscribe((res) =>
-      console.log("Got response: ", res)
+    this.albumService.getAllAlbums().subscribe(
+      res => {
+        this.albums = <Album[]>res;
+        console.log("Got response: ", this.albums)
+
+      }
     );
   }
 

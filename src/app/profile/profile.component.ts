@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
 
   name = "Kishan";
 
+  list = ['item1', 'item2', 'item3'];
+
   constructor() { }
 
   ngOnInit(): void {

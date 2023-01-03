@@ -8,3 +8,15 @@
 <br><br>
 <input type="text" [(ngModel)]="name">
 <p>hello, {{name}}</p>
+
+<br><br>
+<ul>
+  <li *ngFor="let l of list; let i=index;">({{i+1}}) {{l}}</li>
+</ul>
+{{list}}
+<br>
+<div
+  *ngFor="let l of list; let i=index;">
+  ({{i+1}}) {{l}}
+</div>
+

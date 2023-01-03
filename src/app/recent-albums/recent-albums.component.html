@@ -1,2 +1,13 @@
+<h2>Recent Albums</h2>
 
-Most recent albums will be listed here
+<div class="row">
+  <div class="col-sm-3 pt-3" *ngFor="let album of albums; let i=index;">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="album.coverPhotoUrl" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{album.name}}</h5>
+        <a [routerLink]="['/album', album.id]" class="btn btn-primary">Go to album</a>
+      </div>
+    </div>
+  </div>
+</div>
