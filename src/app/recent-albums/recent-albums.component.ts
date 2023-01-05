@@ -19,7 +19,6 @@ export class RecentAlbumsComponent implements OnInit {
       res => {
         this.albums = <Album[]>res;
         console.log("Got response: ", this.albums)
-
       }
     );
   }

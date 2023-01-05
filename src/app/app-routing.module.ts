@@ -8,16 +8,17 @@ import { PhotoDetailsComponent } from './photo-details/photo-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RecentAlbumsComponent } from './recent-albums/recent-albums.component';
 import { UploadPicturesComponent } from './upload-pictures/upload-pictures.component';
+import { UserService } from './user.service';
 
 const routes: Routes = [
-  {path:'profile/:profileId', component: ProfileComponent},
+  {path:'profile/:profileId', component: ProfileComponent, canActivate:[UserService]},
   {path:'login', component: LoginComponent},
-  {path:'album/me', component: MyAlbumsComponent},
-  {path:'create', component: CreateAlbumComponent},
-  {path:'album/:albumId', component: AlbumDetailsComponent},
-  {path:'upload/:albumId', component: UploadPicturesComponent},
-  {path:'photo/:photoId', component: PhotoDetailsComponent},
-  {path:'albums/recent', component: RecentAlbumsComponent}
+  {path:'albums/me', component: MyAlbumsComponent, canActivate:[UserService]},
+  {path:'create', component: CreateAlbumComponent, canActivate:[UserService]},
+  {path:'album/:albumId', component: AlbumDetailsComponent, canActivate:[UserService]},
+  {path:'upload/:albumId', component: UploadPicturesComponent, canActivate:[UserService]},
+  {path:'photo/:photoId', component: PhotoDetailsComponent, canActivate:[UserService]},
+  {path:'albums/recent', component: RecentAlbumsComponent, canActivate:[UserService]}
 ];
 
 @NgModule({

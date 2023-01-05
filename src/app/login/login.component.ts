@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   formVisibility = true;
   loggedOut = false;
 
+  name: string;
   email: string;
   password: string;
 
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   signup(){
     console.log('User tried to signup');
-    this.userService.signup(this.email, this.password);
+    this.userService.signup(this.email, this.password, this.name);
     this.isLoggedIn();
     this.email = "";
     this.password = "";

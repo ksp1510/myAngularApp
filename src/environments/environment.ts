@@ -11,7 +11,8 @@ export const environment = {
     storageBucket: "photoapp-ec7f5.appspot.com",
     messagingSenderId: "937306803161",
     appId: "1:937306803161:web:6492fc83d670a143c167c8"
-  }
+  },
+  API_BASE_URL : "http://3.20.222.152:8080/api/",
 };
 
 /*
