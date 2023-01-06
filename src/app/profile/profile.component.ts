@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../User';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,12 +19,15 @@ export class ProfileComponent implements OnInit {
 
   list = ['item1', 'item2', 'item3'];
 
-  constructor() { }
+  user: User;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getCurrentUserProfile().subscribe(userProfile =>{
+      this.user = <User> userProfile;
+      console.log("Got user profile: ", userProfile);
+    });
   }
 
-  incrementCount() {
-    this.viewCount++;
-  }
 }

@@ -11,9 +11,8 @@ export class AlbumService {
 
   getHeaders(){
     var headers = {
-      'idToken' : localStorage.getItem('idToken')
+      'idToken' : localStorage.getItem('userIdToken')
     };
-    console.log("id token from album service: ", localStorage.getItem('idToken'));
     return headers;
   }
 
@@ -22,7 +21,8 @@ export class AlbumService {
     return this.http.get(environment.API_BASE_URL+"albums", {headers});
   }
 
-  getAlbumById(){
-    return this.http.get(`http://3.20.222.152:8080/api/album`);
+  getPhotos(albumId: string){
+    var headers = this.getHeaders();
+    return this.http.get(environment.API_BASE_URL+"albums/"+albumId+"/photos", {headers});
   }
 }

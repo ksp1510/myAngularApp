@@ -1,22 +1,13 @@
-<h1>{{title}}</h1>
-
-<img [src]="imgUrl" alt="" width="320px" height="180px">
 <br><br>
-<button (click)="incrementCount()">Click</button>
-
-<p>Conter: {{viewCount}}</p>
-<br><br>
-<input type="text" [(ngModel)]="name">
-<p>hello, {{name}}</p>
-
-<br><br>
-<ul>
-  <li *ngFor="let l of list; let i=index;">({{i+1}}) {{l}}</li>
-</ul>
-{{list}}
-<br>
-<div
-  *ngFor="let l of list; let i=index;">
-  ({{i+1}}) {{l}}
+<div class="card text-center" *ngIf="user">
+  <div class="card-header">
+    {{user.name}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{user.email}}</h5>
+    <img class="rounded-circle" [src]="user.profilePhotoUrl" alt="User Profile Photo" width="200px;" height="200px;">
+  </div>
+  <div class="card-footer text-muted">
+    --
+  </div>
 </div>
-

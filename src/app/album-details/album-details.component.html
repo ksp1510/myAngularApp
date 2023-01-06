@@ -10,4 +10,15 @@
   </a>
 </div>
 <br>
-Specific album details will be here
+<br>
+<div class="row">
+  <div class="col-sm-3 pt-3" *ngFor="let photo of photos; let i=index;">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="photo.photoUrl" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{photo.createdBy}}</h5>
+        <a [routerLink]="['/photo', photo.id]" class="btn btn-primary">Go to Photo</a>
+      </div>
+    </div>
+  </div>
+</div>

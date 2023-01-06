@@ -24,7 +24,7 @@ export class UserService implements CanActivate {
     this.user.subscribe(
       userInfo => {
         //console.log("User Info: ", userInfo.getIdToken())
-        this.storeIdToken(userInfo.getIdToken());
+        this.saveIdToken(userInfo);
       }
     );
    }
@@ -41,20 +41,21 @@ export class UserService implements CanActivate {
     return false;
   }
 
-   storeIdToken(idToken: Promise<string>){
-      idToken.then(
-        id => {
-          localStorage.setItem('idToken', id);
-          console.log("idToken value: ", localStorage.getItem('idToken'));
+   saveIdToken(firebaseUser: firebase.default.User){
+      firebaseUser.getIdToken().then(
+        idTokenValue => {
+          localStorage.setItem('userIdToken', idTokenValue);
+          console.log("idToken value: ", localStorage.getItem('userIdToken'));
         }
       );
-   }
+  }
 
    signup(email: string, password: string, name: string){
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Success!', value);
+        this.saveIdToken(value.user);
         this.registerUser(email, name);
         //this.router.navigate(['/profile/me']);
       })
@@ -82,6 +83,7 @@ export class UserService implements CanActivate {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!', value);
+        this.saveIdToken(value.user);
         this.router.navigate(['/albums/recent']);
       })
       .catch(err => {
@@ -96,4 +98,17 @@ export class UserService implements CanActivate {
     console.log('User logged out');
     this.router.navigate(['/login']);
    }
+
+
+   getHeaders(){
+    var headers = {
+      'idToken' : localStorage.getItem('userIdToken')
+    };
+    return headers;
+  }
+
+  getCurrentUserProfile(){
+    var headers = this.getHeaders();
+    return this.http.get(environment.API_BASE_URL+"users/me", {headers});
+  }
 }
