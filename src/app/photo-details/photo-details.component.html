@@ -1,1 +1,24 @@
-<p>photo-details works!</p>
+
+<div class="float-end" style="padding-right: 50px; padding-top: 10px;">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Make this
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" (click)="makeProfilePhoto()">Profile Photo</a>
+        <a class="dropdown-item" (click)="makeCoverPhoto()">Album Cover</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div style="width: 450px; margin: auto;" *ngIf="photo">
+  <img [src]="photo.photoUrl" class="rounded" width="450px">
+</div>
+<br><br>
+<div *ngIf="allComments">
+  <div class="alert alert-primary" style="text-align: right;" role="alert" *ngFor="let comment of allComments">
+      {{comment.message}} -- {{comment.createdBy}} on {{comment.dateCreated}}
+  </div>
+</div>
