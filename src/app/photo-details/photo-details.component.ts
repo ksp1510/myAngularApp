@@ -42,7 +42,6 @@ export class PhotoDetailsComponent implements OnInit {
   }
 
   makeProfilePhoto(){
-
     this.photoService.makeProfilePhoto(this.photo.photoUrl)
       .subscribe(response => {
         console.log("Profile photo updated: ", response);

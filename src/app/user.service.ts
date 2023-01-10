@@ -31,12 +31,12 @@ export class UserService implements CanActivate {
   canActivate(): boolean {
     const auth = getAuth(); //import { getAuth } from "firebase/auth";
     if(auth.currentUser){
-      console.log("getAuth user:" ,auth.currentUser);
+      //console.log("getAuth user:" ,auth.currentUser);
       console.log("canActivate returns true");
       return true;
     }
     this.router.navigate(['/login']);
-    console.log("getAuth user:" ,auth.currentUser);
+    //console.log("getAuth user:" ,auth.currentUser);
     console.log("canActivate returns false");
     return false;
   }

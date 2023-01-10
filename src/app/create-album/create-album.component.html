@@ -1,2 +1,14 @@
-
-This page will allow user to create album
+<br><br>
+<h2>Create Album</h2>
+<br><br>
+<div style="width: 400px; margin:auto;">
+<div class="form-group">
+  <label>Album Title</label>
+  <input type="text" class="form-control" [(ngModel)]="albumTitle" placeholder="Enter album name">
+</div>
+<br>
+<div class="form-group">
+  <label>Cover Photo</label><br>
+  <input type="file" class="form-control-file" [disabled]="!albumTitle" (change)="createAlbum($any($event).target.files[0])">
+</div>
+</div>

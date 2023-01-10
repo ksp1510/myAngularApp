@@ -17,6 +17,7 @@ import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { HttpClientModule } from "@angular/common/http";
 import { UserService } from './user.service';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { UserService } from './user.service';
     AngularFireAuthModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
