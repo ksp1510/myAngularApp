@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessageService } from './message.service';
 import { UserService } from './user.service';
 
 @Component({
@@ -9,10 +10,15 @@ import { UserService } from './user.service';
 export class AppComponent {
   title = 'myAngularApp';
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService,
+              public messageService: MessageService) { }
 
   signout(){
     console.log('User tried to log out');
     this.userService.logout();
+  }
+
+  clearMessages(){
+    this.messageService.clearMessage();
   }
 }

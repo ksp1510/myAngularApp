@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Comment } from './Comment';
 import { Photo } from './Photo';
 
 @Injectable({
@@ -66,4 +67,24 @@ export class PhotoService {
       this.router.navigate(['/album', albumId]);
     })
   }
+
+  saveComment(photoId: string, newComment: string){
+    var headers = this.getHeaders();
+    let currentDate =this.datepipe.transform((new Date), 'MM/dd/yyyy hh:mm:ss');
+    var comment: Comment = {
+      createdBy: "user",
+      dateCreated: currentDate,
+      id: null,
+      message: newComment,
+      photoId: photoId
+    };
+    return this.http.post(environment.API_BASE_URL+"comments", comment, {headers});
+  }
+
+  /*Frontend - Assignment 7
+
+Following the examples in Class 7, create a file upload field in the upload-picture component. Once an image is uploaded using this, it will create a photo in that album (Hint: take the albumId from router and use the POST api/photos API).
+Add a button “Change order” in the photo-details component. Clicking on the button will change the order of the comments shown (i.e. toggle between most recent at the beginning vs at the end).
+Use the messageService to show error messages that come up during the sign-up process.
+*/
 }

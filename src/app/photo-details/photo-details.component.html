@@ -1,4 +1,4 @@
-
+<h2>Photo</h2>
 <div class="float-end" style="padding-right: 50px; padding-top: 10px;">
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <div class="btn-group" role="group">
@@ -11,14 +11,43 @@
       </div>
     </div>
   </div>
+  <a [routerLink]="['/album', this.photo.albumId]" class="btn btn-outline-success" style="margin-left: 10px;">
+    Go back to album
+  </a>
 </div>
+<br>
 <br>
 <div style="width: 450px; margin: auto;" *ngIf="photo">
   <img [src]="photo.photoUrl" class="rounded" width="450px">
 </div>
 <br><br>
+<h3>Comments:</h3>
+<div style="width: 600px; margin: auto;">
+<div class="form-group">
+  <textarea class="form-control" [(ngModel)]="newComment" rows="3"></textarea>
+</div>
+<br>
+<div class="float-end">
+  <button type="button" [disabled]="!newComment" (click)="saveComment()" class="btn btn-primary">Post Comment</button>
+</div>
+<br><br>
+<div class="float-end">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        View comments
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <button class="dropdown-item" *ngIf="sort=='old'; disabled" (click)="sortComment('new')">Newest First</button>
+        <button class="dropdown-item" *ngIf="sort=='new'; disabled" (click)="sortComment('old')">Oldest First</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
 <div *ngIf="allComments">
   <div class="alert alert-primary" style="text-align: right;" role="alert" *ngFor="let comment of allComments">
       {{comment.message}} -- {{comment.createdBy}} on {{comment.dateCreated}}
   </div>
+</div>
 </div>

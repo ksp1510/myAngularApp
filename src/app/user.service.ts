@@ -7,6 +7,8 @@ import { getAuth } from "firebase/auth";
 import { User } from './User';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { initializeApp } from 'firebase/app';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,8 @@ export class UserService implements CanActivate {
 
   constructor(private firebaseAuth: AngularFireAuth,
               private router: Router,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private messageService: MessageService) {
     this.user = firebaseAuth.authState;
 
     //console.log("User Id Token: ", localStorage.getItem('idToken'));
@@ -28,8 +31,9 @@ export class UserService implements CanActivate {
       }
     );
    }
+  app = initializeApp(environment.firebaseConfig);
   canActivate(): boolean {
-    const auth = getAuth(); //import { getAuth } from "firebase/auth";
+    const auth = getAuth(this.app); //import { getAuth } from "firebase/auth";
     if(auth.currentUser){
       //console.log("getAuth user:" ,auth.currentUser);
       console.log("canActivate returns true");
@@ -61,6 +65,7 @@ export class UserService implements CanActivate {
       })
       .catch(err => {
         console.log('Something went wrong: ', err.message);
+        this.messageService.newMessage(err.message);
       });
    }
 
@@ -88,6 +93,7 @@ export class UserService implements CanActivate {
       })
       .catch(err => {
         console.log('Something went wrong: ', err.message);
+        this.messageService.newMessage(err.message);
       });
 
    }

@@ -17,6 +17,8 @@ export class PhotoDetailsComponent implements OnInit {
   photoId: string;
   photo: Photo;
   allComments: Comment[];
+  newComment: string;
+  sort: string = 'new';
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -24,7 +26,8 @@ export class PhotoDetailsComponent implements OnInit {
       console.log("Got photo id: ", this.photoId);
     });
     this.loadPhoto(this.photoId);
-    this.loadComments(this.photoId);
+    this.loadComments(this.photoId, this.sort);
+    console.log("value of sort: ", this.sort );
   }
 
   loadPhoto(photoId: string){
@@ -34,10 +37,16 @@ export class PhotoDetailsComponent implements OnInit {
     });
   }
 
-  loadComments(photoId: string){
+  loadComments(photoId: string, sort: string){
     this.photoService.getComment(photoId).subscribe(comment => {
-      this.allComments = (<Comment[]> comment).reverse();
-      console.log("Got comment details: ", this.allComments)
+      if(sort=='new'){
+        this.allComments = (<Comment[]> comment).reverse();
+        console.log("Got comment details: ", this.allComments);
+      }
+      else{
+        this.allComments = <Comment[]> comment;
+        console.log("Got comment details: ", this.allComments);
+      }
     })
   }
 
@@ -54,6 +63,25 @@ export class PhotoDetailsComponent implements OnInit {
       .subscribe(response => {
         console.log("Cover photo updated: ", response);
       });
+  }
+
+  saveComment(){
+    this.photoService.saveComment(this.photoId, this.newComment).subscribe(res =>{
+      console.log("Comment added: ", res);
+      this.loadComments(this.photoId, this.sort);
+      this.newComment = "";
+    })
+  }
+
+  sortComment(sort: string){
+    if(sort == 'new'){
+      this.sort = sort;
+      this.loadComments(this.photoId, this.sort);
+    }
+    if(sort == 'old'){
+      this.sort = sort;
+      this.loadComments(this.photoId, this.sort);
+    }
   }
 
 }

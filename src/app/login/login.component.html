@@ -2,10 +2,10 @@
 <div style="width: 400px; margin:auto;" *ngIf="formVisibility; else signUpForm">
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Sign In</a>
+    <button class="nav-link active" (click)="changeSignInVisibility()">Sign In</button>
   </li>
   <li class="nav-item">
-    <a class="nav-link"  (click)="changeSignUpVisibility()">Sign Up</a>
+    <button class="nav-link"  (click)="changeSignUpVisibility()">Sign Up</button>
   </li>
 </ul>
 
@@ -20,22 +20,19 @@
   </div>
   <br>
   <button type="submit" class="btn btn-primary" (click)="login()">Sign In</button>
-  <!--<ng-template #logOut>
-    <button type="submit" class="btn btn-primary" (click)="signout()">Sign Out</button>
-  </ng-template>-->
 </div>
 
 <ng-template #signUpForm>
   <div style="width: 400px; margin:auto;">
-  Sign Up Form is here
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link"  (click)="changeSignInVisibility()">Sign In</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Sign Up</a>
-    </li>
-  </ul>
+    Sign Up Form is here
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <button class="nav-link"  (click)="changeSignInVisibility()">Sign In</button>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Sign Up</a>
+      </li>
+    </ul>
 
     <div class="form-group">
       <label for="exampleInputName">Name</label>
@@ -52,8 +49,5 @@
     </div>
     <br>
     <button type="submit" class="btn btn-primary" (click)="signup()">Sign Up</button>
-    <!--<ng-template #logOut>
-      <button type="submit" class="btn btn-primary" (click)="signout()">Sign Out</button>
-    </ng-template>-->
-</div>
+  </div>
 </ng-template>

@@ -13,6 +13,7 @@ import { UserService } from './user.service';
 const routes: Routes = [
   {path:'profile/:profileId', component: ProfileComponent, canActivate:[UserService]},
   {path:'login', component: LoginComponent},
+  {path:'', component: LoginComponent},
   {path:'albums/me', component: MyAlbumsComponent, canActivate:[UserService]},
   {path:'create', component: CreateAlbumComponent, canActivate:[UserService]},
   {path:'album/:albumId', component: AlbumDetailsComponent, canActivate:[UserService]},
