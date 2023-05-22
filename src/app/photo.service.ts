@@ -63,7 +63,7 @@ export class PhotoService {
     };
     this.http.post(environment.API_BASE_URL+"photos", photo, {headers}).subscribe(res =>{
       console.log("Photo uploaded: ", res);
-      //var photo: Photo = <Photo> (res);
+      //var photo = <Photo> (res);
       this.router.navigate(['/album', albumId]);
     })
   }

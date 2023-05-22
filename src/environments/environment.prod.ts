@@ -8,5 +8,5 @@ export const environment = {
     messagingSenderId: "937306803161",
     appId: "1:937306803161:web:6492fc83d670a143c167c8"
   },
-  API_BASE_URL : "http://3.20.222.152:8080/api/",
+  API_BASE_URL : "http://18.221.63.74:8080/api/",
 };
